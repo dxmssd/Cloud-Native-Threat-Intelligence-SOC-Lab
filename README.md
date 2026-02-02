@@ -19,3 +19,6 @@ Tech Stack
 - Operating System: Ubuntu Linux.
 - Security Tools: Microsoft Sentinel, Log Analytics Workspace.
 - Documentation: Diagrams-as-Code (Python).
+
+adntro de la vm por connection ssh
+<img width="1093" height="1017" alt="image" src="https://github.com/user-attachments/assets/53633e7a-c9d3-4570-a0bc-8776c48823ec" />
