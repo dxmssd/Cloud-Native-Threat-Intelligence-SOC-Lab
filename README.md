@@ -2,6 +2,7 @@
 This project demonstrates the implementation of a cloud-based honeypot designed to attract and monitor live cyber attacks from across the globe. Using Microsoft Azure, I deployed a vulnerable Ubuntu virtual machine to serve as a decoy, then routed the attack data (Syslog) through Log Analytics to Microsoft Sentinel.
 The core objective is to visualize real-time "Intrusion Attempts" on a world map, providing insights into attacker geolocations, common usernames used in brute-force attacks, and targeted protocols.
 Architecture
+<img width="1058" height="787" alt="image" src="https://github.com/user-attachments/assets/02fc6d74-b3c6-498e-be78-2c2147aa1a4e" />
 
 The following diagram illustrates the data flow and system components:
 <img width="1610" height="746" alt="image" src="https://github.com/user-attachments/assets/bde20c41-c853-4699-a7c2-18b431cb3dfb" />
@@ -77,3 +78,17 @@ Key Lessons & Troubleshooting
 - Managing Ingestion Latency: I identified and documented a standard cloud ingestion delay (~20-30 min) between local log generation and SIEM indexing. I bypassed this by verifying real-time connectivity through Heartbeat KQL queries.
 - Attack Surface Awareness: Observed how exposing a "vulnerable" VM with open ports (0.0.0.0/0) leads to near-instant discovery by global botnets, resulting in 46 incidents in under two hours.
 - SIEM Automation: Leveraged Microsoft Sentinel to group thousands of raw SSH failure logs into high-fidelity incidents, significantly reducing the "alert fatigue" for a SOC Analyst.
+
+Future Work: Automation & Incident Response
+
+Moving forward, I plan to integrate Azure Logic Apps (Playbooks) into this SOC architecture. The goal is to automate the "Incident Response" phase by:
+- Auto-Blocking: Creating a trigger that automatically adds an attacker's IP to the Azure Firewall Blocklist if more than 10 failed login attempts are detected within 5 minutes.
+- Alert Notifications: Implementing a Logic App to send real-time alerts via Slack or Email when a specific geographic region shows a sudden spike in activity.
+
+Security Posture & Responsible Resource Management
+
+In alignment with professional cloud security standards, all resources (Virtual Machine, VNET, and Log Analytics Workspace) were decommissioned and deleted immediately after the data collection phase. This practice ensures:
+- Cost Management: Prevention of unnecessary Azure credit consumption.
+- Attack Surface Reduction: Closing the exposed ports (0.0.0.0/0) once the research objective was met, preventing further exploitation of the infrastructure.
+
+  
