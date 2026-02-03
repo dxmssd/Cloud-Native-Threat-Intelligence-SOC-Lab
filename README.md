@@ -66,7 +66,6 @@ I developed custom KQL queries to parse raw IP addresses from Syslog and map the
 
 Phase 4: Threat Visualization (Geographic Mapping)
 
-Para esta sección, puedes usar la captura del Heartbeat mapeado que generaste (image_4991e2.png) como prueba de concepto de la visualización geográfica.
 
 <img width="1048" height="1033" alt="image" src="https://github.com/user-attachments/assets/f49d7b37-5590-4ec7-aa35-af2b1ffe393e" />
 
